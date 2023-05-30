@@ -1,0 +1,197 @@
+body{
+    margin: 0;
+    height: 100vh;
+    width:100%;
+    overflow-y:auto;
+}
+.head{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: fixed;
+    z-index: 2;
+}
+.content-hub {
+  height: 100px;
+  background: linear-gradient(90deg, #0b3e27 0%, #197149 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:0 5% 0 5%;
+}
+.content-hub .menu{
+    width:20%;
+    display: flex;
+    align-items: center;
+}
+.content-hub .menu .lines{
+    height: 9px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.content-hub .menu .line {
+    width: 18px;
+    height: 2px;
+    background: #FFFFFF;
+}
+.content-hub .menu .text {
+    margin-left:10px;
+
+    width: 37px;
+    height: 20px;
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14.5px;
+    line-height: 20px;
+    
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+}
+.content-hub .brand{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left:0;
+}
+.image-brand{
+    width: 36px;
+}
+.content-hub .btns{
+    width:20%;
+    height:19px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.image-btn{
+    width: 17.5px;
+}
+.configure-info {
+  height: 40px;
+  background: linear-gradient(270deg, #212121 0%, #000000 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:0 5% 0 5%;
+}
+.configure-info .text{
+    width: 63px;
+    height: 20px;
+
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    color: #FFFFFF;
+
+    display: flex;
+    align-items: center;
+}
+
+.configure-info .button{
+    background: linear-gradient(74.07deg, #10633D 0%, #1A915A 100%);
+    width: 64px;
+    height: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 9999px;
+
+    /* text */
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 16px;
+    text-align: center;
+    color: #FFFFFF;
+}
+.section1{
+    padding-top: 140px;
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px;
+    max-height: 520px;
+}
+.section1 .img-product {
+    width: 305px;
+    height: 391px;
+}
+.section2{
+    width:100%;
+    display: flex;
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+}
+.left,
+.right {
+    position: absolute;
+    width: 388px;
+    height: 396px;
+    --scale-to-value:1;
+}
+.left{
+    --xl-to-value:0;
+    left: -255px;
+    /* background-color: grey; */
+    background-image: url(../images/rolex-dial-grey.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translateX(var(--xl-to-value)) scale(var(--scale-to-value));
+}
+.right{
+    --xr-to-value:0;
+    right: -320px;
+    /* background-color: gold; */
+    background-image: url(../images/rolex-dial-gold.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translateX(var(--xr-to-value)) scale(var(--scale-to-value));
+}
+
+.section3{
+    padding: 0 10% 10% 7%;
+    min-height:400px;
+}
+.section3.active{
+    animation: bgMove 2s ease-out 0s 1;
+    animation-fill-mode: forwards;
+}
+@keyframes bgMove{
+    to{
+        transform:translateY(-260px);
+    }
+}
+.section3 h1 {
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 35px;
+    margin-block-start: 0.2em;
+    margin-block-end: 0;
+}
+.section3 .para{
+    margin-top:20px;
+}
+.section3 p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    color: #212121;
+}
