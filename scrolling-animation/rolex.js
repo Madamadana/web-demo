@@ -5,7 +5,7 @@ const animationData = {
   },
   'translateX':{
     fromValue: 0,
-    toValue: 150
+    toValue: 35
   },
   'shadowOffset':{
     fromValue: 1,
