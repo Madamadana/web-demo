@@ -1,4 +1,4 @@
-const animationLeft = {
+const animationData = {
   'scale':{
     fromValue: 1,
     toValue: 0.7,
@@ -6,51 +6,18 @@ const animationLeft = {
   'translateX':{
     fromValue: 0,
     toValue: 150
-  }
-};
-const animationRight = {
-  'scale':{
-    fromValue: 1,
-    toValue: 0.7,
   },
-  'translateX':{
-    fromValue: 0,
-    toValue: -150
+  'shadowOffset':{
+    fromValue: 1,
+    toValue: 2
   }
 };
 
 const startScrollOffset = 0;
 const showInfoScrollOffset = 400;
 const endScrollOffset = 500;
-let isReachBottom = true;
-
-function scrollBottom(){
-  isReachBottom = false
-  // 距顶部
-  var scrollTop =
-  document.documentElement.scrollTop || document.body.scrollTop;
-  // 可视区高度
-  var clientHeight =
-    document.documentElement.clientHeight || document.body.clientHeight;
-  // 滚动条总高度
-  var scrollHeight =
-    document.documentElement.scrollHeight || document.body.scrollHeight;
-  // 距离顶部或底部的阈值
-  const threshold = 20;
-  let currentHeight=scrollTop + clientHeight + threshold;
-  if (currentHeight >= scrollHeight) {
-    console.log("滚动触底");
-    window.scrollTo({
-     top: 550
-   });
-  }
-  setTimeout(() => {
-   isReachBottom = true
-  }, 1000)
-}
 
 var scrollFunc = function (e) {
-  if (isReachBottom) scrollBottom();
   let y = window.pageYOffset;
   if(y>startScrollOffset){
     startAnimation(y-endScrollOffset>0?endScrollOffset:y);
@@ -60,18 +27,13 @@ var scrollFunc = function (e) {
 window.onscroll=scrollFunc;
 
 function startAnimation(y){
-  let scaleValue = map(y,startScrollOffset,endScrollOffset,animationLeft.scale.fromValue,animationLeft.scale.toValue);
-  let dialL = document.querySelector(".left");
-  dialL.style.cssText = '--scale-to-value: '+ scaleValue
-  +'; --xl-to-value: '+ 
-  map(y,startScrollOffset,endScrollOffset,animationLeft.translateX.fromValue,animationLeft.translateX.toValue)
-  +'px;';
-  let dialR = document.querySelector(".right");
-  dialR.style.cssText = '--scale-to-value: '+ scaleValue
-  +'; --xr-to-value: '+ 
-  map(y,startScrollOffset,endScrollOffset,animationRight.translateX.fromValue,animationRight.translateX.toValue)
-  +'px;';
-  // console.log("Y:"+y);
+  let scaleValue = map(y,startScrollOffset,endScrollOffset,animationData.scale.fromValue,animationData.scale.toValue);
+  let x = map(y,startScrollOffset,endScrollOffset,animationData.translateX.fromValue,animationData.translateX.toValue);
+  let offset = map(y,startScrollOffset,endScrollOffset,animationData.shadowOffset.fromValue,animationData.shadowOffset.toValue);
+  let containerStyle = document.querySelector(".section2").style;
+  containerStyle.cssText = '--scale-to-value: '+ scaleValue
+  +'; --x-to-value: '+ x +'; --shadow-offset: '+ offset;
+  
   let bg = document.querySelector(".section3");
   if(y>showInfoScrollOffset){
     if(!bg.classList.contains('active')){
