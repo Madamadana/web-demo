@@ -9,9 +9,48 @@
 </head>
 
 <body>
+  <!-- 14/Elevation -->
   <div id="screenMask" class="screen">
-    <div id="mask" class="container" onclick="onClick()">
-      <div class="img">Incense</div>
+    <div class="container">
+      <div id="mask" class="img" onclick="onClick()">Incense</div>
+    </div>
+  </div>
+  <!-- 21/Transiton -->
+  <div id="hiddenLayer" class="screen">
+    <div class="pos4">
+      <div id="pic4"></div>
+      <div class="swiper-list-bg swiper-list">
+        <div class="swiper-main-bg swiper-main"></div>
+      </div>
+      <div id="textBox"><p style="margin-block-start: 0;">Fragrance</p></div>
+    </div>
+    <div class="bottom"></div>
+    <div class="pdp">
+      <!-- <div class="swiper">
+          <div class="left"></div>
+          <div class="item"></div>
+          <div class="right"></div>
+      </div> -->
+      <div class="swiper-list-card swiper-list">
+        <div class="swiper-main-card swiper-main"></div>
+      </div>
+      <div class="ad">
+        <img src="../images/aesop-brand.png"/>
+        <h1>Fragrance</h1>
+        <h2>Formulations to instil aromatic quietude while 
+          stimulating senses.</h2>
+        <p id="longText">'Home is our emotional heartland,’ says globally revered designer 
+          Ilse Crawford. To complement this truth, Aesop offers a range of 
+          aromatic formulations that are practical and pleasing in equal measure.</p>
+      </div>
+      <div class="intro">
+          <div class="price">
+            <div class="intro-text">name</div>
+            <p><span id="product-content" class="intro-text"></span><span style="color:lightgray;font-weight:bold"> / </span><span id="product-price" class="intro-text"></span></p>
+          </div>
+          <div class="info">
+          </div>
+      </div>
     </div>
   </div>
   <div class="bg">
@@ -30,7 +69,7 @@
         <div class="section11">
           <div class="title">Browse by product type</div>
           <div class="product-nav" id="infoLoop">
-            <!-- <div class="block">Incense</div> -->
+            <!-- <div class="block" id="Incense">Incense</div> -->
           </div>
         </div>
         <div class="section12">
@@ -51,6 +90,8 @@
   </div>
 </body>
 
+<script src="swiper.js"></script>
+<script src="slider_standBy.js"></script>
 <script src="home.js"></script>
 
 </html>

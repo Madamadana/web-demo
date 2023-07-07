@@ -3,11 +3,365 @@
     --zoom-duration:0.5s;
     /* --value: calc((100vh/var(--h)) + 0.1);
     --origin-y: calc(var(--L)/(100vh - var(--h))); */
+    --a1-duration: 300ms;
+    --a2-duration: 300ms; /*上下内容渐入*/
+    --drag-duration: 400ms;
+    --color-lightwhite: #FFFEF2;
 }
 body{
     margin: 0;
     background: #EBEADE;
 }
+
+/* swiper */
+
+.swiper-list{
+    height: 30%;
+    position: relative;
+    overflow: hidden;
+    /* background: lightpink; */
+    /* padding: 30px 0; */
+}
+.swiper-main{
+    height: 100%;
+    position: relative;
+}
+.swiper-main div{
+    height: 100%;
+    display: block;
+    position: absolute;
+    display: inline-block;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+}
+
+.swiper-list-card{
+    animation: fadeInDown var(--a2-duration) ease-out 1;
+}
+
+.swiper-list-bg{
+    height: 100%;
+    visibility: hidden;
+}
+
+/* swiper */
+
+/* PDP */
+.pdp{
+    display: none;
+    position: absolute;
+    z-index: 4;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+.pdp.active{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.pdp .ad{
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    overflow: hidden;
+    top: 2%;
+    padding: 20px;
+    color: #FFFEF2;
+    box-sizing: border-box;
+    animation: fadeInUp var(--a2-duration) ease-out 1;
+}
+
+@keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(-100%)
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+}
+
+.pdp .ad img{
+    width: 120px;
+    height: 40px;
+}
+
+.pdp .ad h1{
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.pdp .ad h2{
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.pdp .ad p{
+    --lines:calc(30vh - 170px - 1em);
+    font-family: Inter;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 15px;
+    letter-spacing: 0em;
+    text-align: left;
+    height: var(--lines);
+    width: 100%;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--line-num);
+    overflow: hidden;
+}
+
+.pdp .intro{
+    position: absolute;
+    bottom: 0;
+    height: 30%;
+    width: 100%;
+    margin-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    animation: fadeInDown var(--a2-duration) ease-out 1;
+}
+
+.pdp .intro .intro-text{
+    font-family: Inter;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: center;
+    color:#666666;
+    animation: fadeOut var(--drag-duration) ease-out 1;
+    animation-fill-mode: both;
+    animation-direction: reverse;
+}
+
+.pdp .intro .price{
+    height: 20%;
+    width: 100%;
+}
+
+.pdp .intro .price div{
+    color: #252525;
+}
+
+.pdp .intro .price p{
+    text-align: center;
+}
+
+.pdp .intro .info{
+    /* background: lightseagreen; */
+    /* height: 80%; */
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.pdp .intro .info::before{
+    content: '';
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: #252525;
+}
+
+.pdp .intro .info .line{
+    width: 100%;
+    /* height: 60px; */
+    padding: 20px 0px 22px 0px;
+    box-sizing: border-box;
+    border-bottom:1px solid #333333;
+    display: flex;
+    align-items: center;
+}
+
+.pdp .intro .info .line .subtitle{
+    width: 20%;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: left;
+    align-self: baseline;
+    color: #252525;
+}
+
+.pdp .intro .info .line .content{
+    width: 80%;
+    text-align: left;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+}
+
+.pdp .swiper{
+    position: absolute;
+    height: 30%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    animation: fadeInDown var(--a2-duration) ease-out 1;
+}
+
+@keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translateY(50vh);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+}
+
+.pdp .swiper .right,
+.pdp .swiper .left,
+.pdp .swiper .item{
+    width: 50%;
+    height: 100%;
+    background: url(../images/aesop-pdp-1.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center bottom;
+}
+.pdp .swiper .right,
+.pdp .swiper .left{
+    position: absolute;
+    transform: scale(0.5);
+}
+
+.pdp .swiper .left{
+    background: url(../images/aesop-pdp-0.png) no-repeat;
+    background-size: contain;
+    background-position: center bottom;
+    left:-25%;
+}
+.pdp .swiper .right{
+    background: url(../images/aesop-pdp-2.png) no-repeat;
+    background-size: contain;
+    background-position: center bottom;
+    right:-25%;
+}
+
+/* PDP */
+
+/* 第4张图片动效 */
+.zoomOut{
+    transform-origin: center center;
+    animation: zoomOutandFadeOut var(--a1-duration) ease-out 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes zoomOutandFadeOut{
+    from{
+        transform:scale(1);
+        opacity: 1;
+    }
+    to{
+        transform: scale(0.4,0.4);
+        opacity: 0;
+    }
+}
+
+.pos4{
+    margin-top: calc(323px + 1vw + var(--h));
+    position: absolute;
+    width: 33%;
+    height: var(--h);
+}
+#pic4{
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    background: url(../images/aesop-nav-objects.png) no-repeat;
+    background-size: contain;
+    background-position: center top;
+}
+
+#textBox{
+    box-sizing: border-box;
+    width: 33vw;
+    height: var(--h);
+    padding: 10px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 11.9792px;
+    line-height: 17px;
+    color: #FFFEF2;
+    position: absolute;
+    top: 0;
+}
+
+#textBox.active{
+    transform-origin: 0% 0%;
+    animation: coverTop var(--a1-duration) ease-out 1;
+    animation-fill-mode: forwards;
+    z-index: 3;
+}
+
+@keyframes coverTop {
+    to{
+        transform:scale(3.1);
+    }
+}
+
+.pos4.active{
+    transition: all var(--a1-duration);
+    margin-top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.fade{
+    animation: fadeOut var(--a1-duration) ease-out 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut{
+    to{
+        opacity: 0;
+    }
+}
+
+.bottom{
+    background: var(--color-lightwhite);
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 50%;
+    opacity: 1;
+}
+
+.bottom.active{
+    transform-origin: center bottom;
+    animation: zoomIn var(--a1-duration) ease-out 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes zoomIn{
+    from{
+        opacity: 0;
+        transform: scale(0.1);
+    }
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+/* 第4张图片动效 */
+
 .container{
     margin-top: calc(323px + 0.5vw);
     position: absolute;
@@ -29,12 +383,12 @@ body{
     color: #FFFEF2;
     background-size: cover;
 }
-.container.active{
+#mask.active{
     transform-origin: 0% var(--origin-y);
     animation: enlarge var(--zoom-duration) ease-out 2;
     animation-fill-mode: forwards;
     animation-direction: alternate;
-    z-index: 10;
+    z-index: 5;
 }
 
 @keyframes enlarge {
@@ -62,7 +416,6 @@ body{
     position: absolute;
     z-index: 1;
     --vw100:100dvw;
-    --color-lightwhite: #FFFEF2;
     margin: 0;
     height: 100vh;
     width:var(--vw100);
