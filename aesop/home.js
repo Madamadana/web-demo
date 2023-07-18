@@ -208,9 +208,9 @@ function showInfo() {
     info += e;
     info += "</div>";
   });
+  document.getElementById("infoLoop").innerHTML = info;
 
   // 页面切换按钮
-  document.getElementById("infoLoop").innerHTML = info;
   let first = document.querySelector("#infoLoop div");
   first.addEventListener("click", onClick);
   let fourth = document.querySelector("#Fragrance");

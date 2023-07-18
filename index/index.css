@@ -1,0 +1,35 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #F7F7F7;
+}
+
+.list{
+    display: grid;
+    grid-template-columns: 30vw 30vw 30vw;
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+.list div{
+    background: #E0E0F5;
+    border-radius: 10px;
+    color: #222222;
+    padding: 10px;
+}
+
+.list div>a{
+    text-decoration: none;
+    font-family: Open Sans;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 36px;
+    letter-spacing: 0em;
+    color: #222222;
+    text-align: left;
+}
+
+.list div>a:hover{
+    color: -webkit-link;
+}

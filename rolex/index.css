@@ -1,0 +1,333 @@
+:root {
+    --test-color: lightgoldenrodyellow;
+    --grid-gap: 6px;
+    --grid-col-num: 6;
+
+    /* unchanged part */
+    --outer-margin: 8vw;
+}
+
+body {
+    --vw100: 100dvw;
+    margin: 0;
+    height: 100vh;
+    overflow-y: auto;
+    width: var(--vw100);
+}
+
+.head {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: fixed;
+    z-index: 10;
+}
+
+.content-hub {
+    height: 100px;
+    background: linear-gradient(90deg, #0b3e27 0%, #197149 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5% 0 5%;
+}
+
+.content-hub .menu {
+    width: 20%;
+    display: flex;
+    align-items: center;
+}
+
+.content-hub .menu .lines {
+    height: 9px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.content-hub .menu .line {
+    width: 18px;
+    height: 2px;
+    background: #FFFFFF;
+}
+
+.content-hub .menu .text {
+    margin-left: 10px;
+
+    width: 37px;
+    height: 20px;
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14.5px;
+    line-height: 20px;
+
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+}
+
+.content-hub .brand {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+}
+
+.image-brand {
+    width: 36px;
+}
+
+.content-hub .btns {
+    width: 20%;
+    height: 19px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.image-btn {
+    width: 17.5px;
+}
+
+.configure-info {
+    height: 40px;
+    background: linear-gradient(270deg, #212121 0%, #000000 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5% 0 5%;
+}
+
+.configure-info .text {
+    width: 63px;
+    height: 20px;
+
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    color: #FFFFFF;
+
+    display: flex;
+    align-items: center;
+}
+
+.configure-info .button {
+    background: linear-gradient(74.07deg, #10633D 0%, #1A915A 100%);
+    width: 64px;
+    height: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 9999px;
+
+    /* text */
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 16px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.section1 {
+    /* background: var(--test-color); */
+    width: var(--vw100, 100vw);
+    display: grid;
+    column-gap: var(--grid-gap);
+    grid-template-columns: calc(var(--outer-margin) - var(--grid-gap)) [main-start] repeat(var(--grid-col-num), [col] minmax(0, 1fr)) [col main-end] calc(var(--outer-margin) - var(--grid-gap));
+    overflow: hidden;
+    position: relative;
+    margin-block-end: 10vh;
+}
+
+.section1 .img-product {
+    grid-column: main;
+    object-fit: cover;
+    width: 100%;
+    overflow: clip;
+}
+
+.section2 {
+    position: relative;
+    /* background: lightgrey; */
+    width: var(--vw100, 100vw);
+    display: grid;
+    column-gap: var(--grid-gap);
+    grid-template-columns: [doc-start] calc(var(--outer-margin) - var(--grid-gap)) [main-start] repeat(var(--grid-col-num), [col] minmax(0, 1fr)) [col main-end] calc(var(--outer-margin) - var(--grid-gap)) [doc-end];
+    grid-template-rows: [top-row] 85vw auto [bottom-row];
+}
+
+.section2 .intro {
+    grid-column: main;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: sticky;
+    z-index: 2;
+    top: 0;
+    align-self: end;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1000ms ease-out;
+}
+.section2 .intro.active {
+    opacity: 1;
+    transform: none;
+}
+
+.section2 .intro h1 {
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 35px;
+    margin-block-start: 0.2em;
+    margin-block-end: 0;
+}
+
+.section2 .intro .para {
+    margin-top: 20px;
+}
+
+.section2 .intro p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    color: #212121;
+}
+
+.section2 .dialBox {
+    --dirfactor: 1;
+    --xfactor: calc(clamp(0, var(--prog), 0.4) / 0.4);
+    --scalefactor: calc(clamp(0, var(--prog), 0.35) / 0.35);
+    --sxy: calc(2 + -1 * var(--scalefactor)),calc(2 + -1 * var(--scalefactor));
+    display: flex;
+    align-items: start;
+    grid-column: doc-start/doc-end;
+    grid-row: 1;
+    width: 100%;
+    align-self: center;
+    padding-block-start: 5vh;
+}
+.section2 .dialBox .dial{
+    position: absolute;
+    z-index: 1;
+}
+.section2 .dialBox .dial:first-of-type{
+    display: none;
+}
+.section2 .dialBox .dial:last-of-type{
+    display: none;
+}
+.section2 .dialBox .dial:nth-child(2){
+    display: block;
+    inset-inline-start: 35%;
+    transform: translate3d(calc((-70vw * var(--dirfactor)) + (70vw * var(--dirfactor)) * var(--xfactor)), 0, 0) scale3d(var(--sxy), 1);
+} 
+.section2 .dialBox .dial:nth-last-child(2){
+    display: block;
+    inset-inline-end: 0%;
+    transform: translate3d(calc((75vw * var(--dirfactor)) + (-75vw * var(--dirfactor)) * var(--xfactor)), 0, 0) scale3d(var(--sxy), 1);
+}
+.section2 .dialBox .dial .bezel{
+    display: block;
+    position: absolute;
+    width: 55vw;
+    height: auto;
+    transform: translate(-50%,-50%);
+}
+.section2 .dialBox .dial .shadowBox{
+    position: absolute;
+    z-index: 0;
+    transform: translate(-50%,-50%);
+    opacity: calc((0.5 + 0.5 * var(--prog)));
+}
+.section2 .dialBox .dial .shadowBox .shadow{
+    display: block;
+    position: relative;
+    width: 65vw;
+    height: 65vw;
+    transform: translate3d(calc((10 * (var(--prog) - 1) - 2) * 1%), calc((-10 * (var(--prog) - 1) + 2) * 1%), 0);
+}
+.section-blank{
+    height: 100vh;
+    width: 100%;
+    background: #FFFEF2;
+}
+
+/* PC端 */
+@media (min-width: 48rem) {
+    :root {
+        --test-color: lightskyblue;
+        --grid-gap: 8px;
+        --grid-col-num: 12;
+    }
+
+    .section2 {
+        height: 300vh;
+    }
+
+    .section2 .intro {
+        grid-row: top-row/bottom-row;
+        height: 100vh;
+        align-self: start;
+        grid-column: col 4/span 4;
+    }
+
+    .section2 .dialBox {
+        --xfactor: calc(clamp(0, var(--prog), 0.75) / 0.75);
+        --scalefactor: calc(clamp(0, var(--prog), 0.75) / 0.75);
+        --sxy: calc((2 + -1.6 * var(--scalefactor))),calc((2 + -1.6 * var(--scalefactor)));
+        position: sticky;
+        top: 0;
+        grid-row: top-row/bottom-row;
+        height: 100vh;
+        align-items: center;
+        align-self: start;
+        padding-block-start: unset;
+        overflow: hidden;
+    }
+    .section2 .dialBox .dial .bezel{
+        width: 40vw;
+    }
+    .section2 .dialBox .dial .shadowBox .shadow{
+        width: 50vw;
+        height: 50vw;
+    }
+
+    .section2 .dialBox .dial:nth-child(1){
+        display: block;
+        inset-inline-start: 0%;
+        transform: translateX(calc((-95vw * var(--dirfactor)) + (95vw * var(--dirfactor)) * var(--xfactor))) scale3d(var(--sxy), 1);
+    }
+
+    .section2 .dialBox .dial:nth-child(2){
+        display: block;
+        inset-inline-start: 18%;
+        transform: translateX(calc((-35vw * var(--dirfactor)) + (35vw * var(--dirfactor)) * var(--xfactor))) scale3d(var(--sxy), 1);
+    } 
+
+    .section2 .dialBox .dial:nth-last-child(1){
+        display: block;
+        inset-inline-end: 12%;
+        transform: translateX(calc((145vw * var(--dirfactor)) + (-145vw * var(--dirfactor)) * var(--xfactor))) scale3d(var(--sxy), 1);
+    }
+
+    .section2 .dialBox .dial:nth-last-child(2){
+        display: block;
+        inset-inline-end: 30%;
+        transform: translateX(calc((80vw * var(--dirfactor)) + (-80vw * var(--dirfactor)) * var(--xfactor))) scale3d(var(--sxy), 1);
+    }
+}

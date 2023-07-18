@@ -1,0 +1,258 @@
+html{
+    font-size: 62.5%;
+}
+body{
+    margin: 0;
+    height: 100vh;
+}
+.header{
+    width: 100%;
+    height: 20vh;
+    background: url(../images/aesop-animal-bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    position: relative;
+    z-index: 1;
+}
+.header .nav{
+    width: 100%;
+    height: 15vh;
+    background: #FFFFFFBF;
+    display: flex;
+    align-items: center;
+}
+
+.CompassSection{
+    background-image: url(../images/bg-sky.png);
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+}
+
+.Compass{
+    font-size: 85rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 1em;
+    height: 1em;
+    top: calc(-330em / 850);
+    margin: 0 auto calc(-330em / 850);
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.CompassItems{
+    position: relative;
+    width: calc(698em / 850);
+    height: calc(698em / 850);
+}
+
+.CompassItem{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    -webkit-box-align: end;
+    align-items: flex-end;
+    pointer-events: none;
+}
+
+.CompassItem-title-curved{
+    position: absolute;
+    left: 50%;
+    cursor: pointer;
+    top: 50%;
+    width: 44.5%;
+    height: 50%;
+    font-size: calc(7em / 850);
+    font-weight: 400;
+    text-transform: uppercase;
+    transform-origin: center top;
+    pointer-events: auto;
+}
+
+
+.CompassItem-title-curved svg {
+    display: block;
+    width: 100%;
+    height: 118%;
+}
+
+.CompassItem-title-curved svg text {
+    text-anchor: middle;
+}
+
+.CompassItem-icon {
+    position: absolute;
+    left: 50%;
+    cursor: pointer;
+    bottom: -11.5%;
+    transform: translateX(-50%);
+    font-size: 3.5em;
+}
+
+.CompassItem-dot {
+    background: #fff;
+    position: absolute;
+    left: 50%;
+    cursor: pointer;
+    content: '';
+    display: block;
+    width: calc(15em / 8);
+    height: calc(15em / 8);
+    border-radius: 50%;
+    bottom: -23.7%;
+    transform: translateX(-50%);
+}
+
+.Compass-illus{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 300ms ease;
+    width: 100%;
+    height: 100%;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+}
+
+.CompassItem.active .Compass-illus{
+    opacity: 1;
+}
+
+.CompassItem.active .CompassItem-title-curved{
+    opacity: 0;
+}
+
+.Compass-illus img{
+    width: calc(100% - 4px);
+    height: auto;
+    border-radius: 50%;
+}
+
+.swiper-container{
+    /* background: lightseagreen; */
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+    top:-1em;
+    width: 40%;
+    max-width: 65rem;
+    margin: -1em auto;
+    font-size: 6rem;
+}
+
+.swiper-viewWindow{
+    position: relative;
+    /* overflow: hidden; */
+    font: inherit;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    box-sizing: content-box;
+    transition-property: transform;
+    transition: left 300ms ease;
+    /* background: lightblue; */
+}
+
+.swiper-item{
+    position: relative;
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    /* margin-right: 10px; */
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.swiper-item-title{
+    display: block;
+}
+
+.swiper-item-title::before{
+    font-size: 5rem;
+    height: 7rem!important;
+    display: block;
+}
+
+.icon-0:before {
+    content: url(../images/seaside-icon-0.svg);
+}
+
+.icon-1:before {
+    content: url(../images/seaside-icon-1.svg);
+}
+
+.icon-2:before {
+    content: url(../images/seaside-icon-2.svg);
+    box-sizing: border-box;
+    padding-top: 0.5em;
+    font-size: 3.5rem;
+}
+
+.icon-3:before {
+    content: url(../images/seaside-icon-3.svg);
+}
+
+.icon-4:before {
+    content: url(../images/seaside-icon-4.svg);
+    font-size: 6rem;
+}
+
+
+.swiper-item-title-title{
+    display: block;
+    text-transform: uppercase;
+    font-size: calc(34em / 13);
+    font-weight: 600;
+    margin-bottom: 0.2em;
+}
+
+.compass-nav{
+    position: absolute;
+    z-index: 1;
+    top: 4em;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 5rem;
+    margin: auto;
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.compass-nav .btn{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+    width: 5rem;
+    transition: transform 0.3s ease;
+}
+
+.compass-nav .btn.prev:hover{
+    transform: translateX(-1rem);
+}
+
+.compass-nav .btn.next:hover{
+    transform: rotate(180deg) translateX(-1rem);
+}
+
+.compass-nav .btn.next {
+    transform: rotate(180deg);
+}
+
