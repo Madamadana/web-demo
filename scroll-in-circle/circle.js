@@ -1,9 +1,74 @@
-const itemTitles = [
-  {index:0,title:"Unique sites"},
-  {index:1,title:"beautiful"},
-  {index:2,title:"reconnect"},
-  {index:3,title:"cruise"},
-  {index:4,title:"sweet"}
+const swiperItemStatic = [
+  {
+    index: 0,
+    title: "Unique sites",
+    subtitle: "",
+    desc: "Discover the hidden secrets of Noirmoutier Island",
+    btns: [
+      "Gois passage",
+      "Salterns",
+      "Bois de la Chaise",
+      "Beaches",
+      "Sébastopol Polder",
+      "Heritage & tourist attractions",
+    ],
+  },
+  {
+    index: 1,
+    title: "beautiful",
+    subtitle: "bike rides",
+    desc: "Slow down and explore the multiple facets of Noirmoutier Island by bicycle.",
+    btns: [
+      "From Gois to forests",
+      "From marshes to mills",
+      "From beaches to ports",
+      "Bicycle hires",
+    ],
+  },
+  {
+    index: 2,
+    title: "reconnect",
+    subtitle: "with nature",
+    desc: "Revive your taste for freedom on a naturally beautiful and preserved island.",
+    btns: [
+      "walking trails",
+      "Gois passage",
+      "Sébastopol Polder",
+      "Salterns",
+      "Müllembourg reserve",
+      "Beaches & dunes",
+      "Digging for shellfish",
+      "Forests",
+    ],
+  },
+  {
+    index: 3,
+    title: "cruise",
+    subtitle: "the waters your way",
+    desc: "Noirmoutier Island invites you to travel its fantastic bodies of water.",
+    btns: [
+      "sailing",
+      "land yachting",
+      "Kayaking & paddleboarding",
+      "kite surfing",
+    ],
+  },
+  {
+    index: 4,
+    title: "sweet",
+    subtitle: "& savoury treats",
+    desc: "Between the nourishing sea and the fertile land, Noirmoutier Island has what it takes to delight anyone’s palate.",
+    btns: [
+      "restaurants",
+      "bar",
+      "markets",
+      "local producers",
+      "salt",
+      "oysters",
+      "fish",
+      "Bonnotte potatoes",
+    ],
+  },
 ];
 
 function Compass(obj) {
@@ -29,25 +94,39 @@ Compass.prototype = {
     this.setActive();
     this.eventBind();
   },
-  initSwiper(){
+  initSwiper() {
     this.movingTape = document.querySelector(".swiper-viewWindow");
-    this.num = itemTitles.length;
+    this.num = swiperItemStatic.length;
     //列表渲染
-    let itemArr = [itemTitles[itemTitles.length-1], ...itemTitles, itemTitles[0]];
+    let itemArr = [
+      swiperItemStatic[swiperItemStatic.length - 1],
+      ...swiperItemStatic,
+      swiperItemStatic[0],
+    ];
     let items = "";
     /* <div class="swiper-item">
           <span class="swiper-item-title icon-0">
             <span class="swiper-item-title-title">reconnect0</span>
           </span>
         </div> */
+    //title
+    //desc
+    //btns
     for (let i = 0; i < itemArr.length; i++) {
-        items += `<div class="swiper-item"><span class="swiper-item-title icon-${itemArr[i].index}"><span class="swiper-item-title-title">${itemArr[i].title}</span></span></div>`
+      items += `<div class="swiper-item"><span class="swiper-item-title icon-${itemArr[i].index}">
+      <span class="swiper-item-title-title">${itemArr[i].title}</span><span class="swiper-item-title-subtitle">${itemArr[i].subtitle}</span></span>
+      <div class="swiper-item-desc"><p>${itemArr[i].desc}</p></div>
+      <div class="swiper-item-btnBox">`;
+      itemArr[i].btns.forEach((e)=>{
+        items += `<a href="#" class="swiper-item-btn"><span>${e}</span></a>`
+      });
+      items += `</div></div>`;
     }
     this.movingTape.innerHTML = items;
-    this.moveWidth = document.querySelector(".swiper-item").offsetWidth;
+    this.moveWidth = document.querySelector(".swiper-item").offsetWidth + 10;
     this.movingTape.style.transition = `left ${this.aniTime}ms ${
-        this.aniTime == 0 ? "" : this.timing
-      }`;
+      this.aniTime == 0 ? "" : this.timing
+    }`;
     this.movingTape.style.left = `-${this.activeIdx * this.moveWidth}px`;
     this.nowSwiperIndex = itemArr[this.activeIdx].index;
   },
@@ -103,15 +182,17 @@ Compass.prototype = {
     let that = this;
     this.nowSwiperIndex++;
     this.movingTape.style.transition = `left ${aniTime}ms ${
-        aniTime == 0 ? "" : this.timing
-      }`;
-    this.movingTape.style.left = `${parseInt(this.movingTape.style.left) - this.moveWidth}px`;
-    if(this.nowSwiperIndex == this.num){
-        that.nowSwiperIndex = 0;
-        setTimeout(function(){
-            that.movingTape.style.transition= `left 0ms`;
-			that.movingTape.style.left = `${-that.moveWidth}px`;
-        },aniTime)
+      aniTime == 0 ? "" : this.timing
+    }`;
+    this.movingTape.style.left = `${
+      parseInt(this.movingTape.style.left) - this.moveWidth
+    }px`;
+    if (this.nowSwiperIndex == this.num) {
+      that.nowSwiperIndex = 0;
+      setTimeout(function () {
+        that.movingTape.style.transition = `left 0ms`;
+        that.movingTape.style.left = `${-that.moveWidth}px`;
+      }, aniTime);
     }
   },
   showPrev(aniTime) {
@@ -130,17 +211,19 @@ Compass.prototype = {
     /* Swiper */
     let that = this;
     this.movingTape.style.transition = `left ${aniTime}ms ${
-        aniTime == 0 ? "" : this.timing
-      }`;
-    this.movingTape.style.left = `${parseInt(this.movingTape.style.left) + this.moveWidth}px`;
+      aniTime == 0 ? "" : this.timing
+    }`;
+    this.movingTape.style.left = `${
+      parseInt(this.movingTape.style.left) + this.moveWidth
+    }px`;
     if (this.nowSwiperIndex === 0) {
-        that.nowSwiperIndex = (that.num-1);
-        setTimeout(function() {					
-            that.movingTape.style.transition = `left 0ms`;
-            that.movingTape.style.left = `${-that.num * that.moveWidth}px`;//312|3|1
-        }, aniTime)
+      that.nowSwiperIndex = that.num - 1;
+      setTimeout(function () {
+        that.movingTape.style.transition = `left 0ms`;
+        that.movingTape.style.left = `${-that.num * that.moveWidth}px`; //312|3|1
+      }, aniTime);
     } else {
-        this.nowSwiperIndex--;
+      this.nowSwiperIndex--;
     }
   },
 };
