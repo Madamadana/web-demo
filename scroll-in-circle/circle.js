@@ -118,8 +118,8 @@ Compass.prototype = {
       <span class="swiper-item-title-title">${itemArr[i].title}</span><span class="swiper-item-title-subtitle">${itemArr[i].subtitle}</span></span>
       <div class="swiper-item-desc"><p>${itemArr[i].desc}</p></div>
       <div class="swiper-item-btnBox">`;
-      itemArr[i].btns.forEach((e)=>{
-        items += `<a href="#" class="swiper-item-btn"><span>${e}</span></a>`
+      itemArr[i].btns.forEach((e) => {
+        items += `<a href="#" class="swiper-item-btn"><span>${e}</span></a>`;
       });
       items += `</div></div>`;
     }
@@ -161,13 +161,13 @@ Compass.prototype = {
       that.throttle(that.showNext, that.aniTime, that.aniTime);
     });
 
-    window.addEventListener("resize",function(){
+    window.addEventListener("resize", function () {
       that.moveWidth = document.querySelector(".swiper-item").offsetWidth;
       that.movingTape.style.transition = `left 0ms`;
       that.movingTape.style.left = `${
-        - (that.nowSwiperIndex + 1)*that.moveWidth
+        -(that.nowSwiperIndex + 1) * that.moveWidth
       }px`;
-    })
+    });
   },
   throttle(handle, delay, val) {
     let now = Date.now();
@@ -197,7 +197,7 @@ Compass.prototype = {
     //   parseInt(this.movingTape.style.left) - this.moveWidth
     // }px`;
     this.movingTape.style.left = `${
-      - (this.nowSwiperIndex + 1)*this.moveWidth
+      -(this.nowSwiperIndex + 1) * this.moveWidth
     }px`;
     if (this.nowSwiperIndex == this.num) {
       that.nowSwiperIndex = 0;
@@ -228,9 +228,7 @@ Compass.prototype = {
     // this.movingTape.style.left = `${
     //   parseInt(this.movingTape.style.left) + this.moveWidth
     // }px`;
-    this.movingTape.style.left = `${
-      - this.nowSwiperIndex*this.moveWidth
-    }px`;
+    this.movingTape.style.left = `${-this.nowSwiperIndex * this.moveWidth}px`;
     if (this.nowSwiperIndex === 0) {
       that.nowSwiperIndex = that.num - 1;
       setTimeout(function () {
@@ -256,3 +254,12 @@ function printElements(info, e) {
   }
   console.log(myDate + " " + info + " 转盘元素排列：" + str);
 }
+
+window.onload = function () {
+  const imgs = document.getElementsByTagName("img");
+  for (let i = 0; i < imgs.length; i++) {
+    if (!imgs[i].alt) {
+      imgs[i].alt = "this is pic" + i;
+    }
+  }
+};

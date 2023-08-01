@@ -6,6 +6,20 @@ body{
     align-items: center;
 }
 
+img {
+    position: relative;
+}
+
+img::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(135, 206, 250, 0.417);
+}
+
 .container{
     width: 312px;
     height: 416px;

@@ -7,6 +7,20 @@
     --outer-margin: 8vw;
 }
 
+img {
+    position: relative;
+}
+
+img::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(135, 206, 250, 0.417);
+}
+
 body {
     --vw100: 100dvw;
     margin: 0;
