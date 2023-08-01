@@ -71,6 +71,7 @@ const swiperItemStatic = [
   },
 ];
 
+let viewHeight = document.documentElement.clientHeight;
 function Compass(obj) {
   this.aniTime = obj.aniTime;
   this.timing = obj.timing;
@@ -123,7 +124,7 @@ Compass.prototype = {
       items += `</div></div>`;
     }
     this.movingTape.innerHTML = items;
-    this.moveWidth = document.querySelector(".swiper-item").offsetWidth + 10;
+    this.moveWidth = document.querySelector(".swiper-item").offsetWidth;
     this.movingTape.style.transition = `left ${this.aniTime}ms ${
       this.aniTime == 0 ? "" : this.timing
     }`;
@@ -159,6 +160,14 @@ Compass.prototype = {
       console.log("click next");
       that.throttle(that.showNext, that.aniTime, that.aniTime);
     });
+
+    window.addEventListener("resize",function(){
+      that.moveWidth = document.querySelector(".swiper-item").offsetWidth;
+      that.movingTape.style.transition = `left 0ms`;
+      that.movingTape.style.left = `${
+        - (that.nowSwiperIndex + 1)*that.moveWidth
+      }px`;
+    })
   },
   throttle(handle, delay, val) {
     let now = Date.now();
@@ -184,8 +193,11 @@ Compass.prototype = {
     this.movingTape.style.transition = `left ${aniTime}ms ${
       aniTime == 0 ? "" : this.timing
     }`;
+    // this.movingTape.style.left = `${
+    //   parseInt(this.movingTape.style.left) - this.moveWidth
+    // }px`;
     this.movingTape.style.left = `${
-      parseInt(this.movingTape.style.left) - this.moveWidth
+      - (this.nowSwiperIndex + 1)*this.moveWidth
     }px`;
     if (this.nowSwiperIndex == this.num) {
       that.nowSwiperIndex = 0;
@@ -213,8 +225,11 @@ Compass.prototype = {
     this.movingTape.style.transition = `left ${aniTime}ms ${
       aniTime == 0 ? "" : this.timing
     }`;
+    // this.movingTape.style.left = `${
+    //   parseInt(this.movingTape.style.left) + this.moveWidth
+    // }px`;
     this.movingTape.style.left = `${
-      parseInt(this.movingTape.style.left) + this.moveWidth
+      - this.nowSwiperIndex*this.moveWidth
     }px`;
     if (this.nowSwiperIndex === 0) {
       that.nowSwiperIndex = that.num - 1;

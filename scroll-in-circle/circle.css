@@ -82,7 +82,7 @@ body{
 .CompassItem-title-curved svg {
     display: block;
     width: 100%;
-    height: 118%;
+    /* height: 118%; */
 }
 
 .CompassItem-title-curved svg text {
@@ -96,6 +96,10 @@ body{
     bottom: -11.5%;
     transform: translateX(-50%);
     font-size: 3.5em;
+}
+
+.CompassItem-icon svg{
+    height: 1.5em;
 }
 
 .CompassItem-dot {
@@ -147,7 +151,7 @@ body{
     z-index: 0;
     overflow: hidden;
     top:-1em;
-    width: 40%;
+    width: 95%;
     max-width: 65rem;
     margin: -1em auto;
     font-size: 6rem;
@@ -172,7 +176,6 @@ body{
     flex-shrink: 0;
     width: 100%;
     height: 100%;
-    margin-right: 10px;
     font-size: 1.3rem;
     text-align: center;
 }
@@ -301,5 +304,14 @@ body{
 
 .compass-nav .btn.next {
     transform: rotate(180deg);
+}
+
+@media screen and (max-width: 900px){
+    .Compass {
+    font-size: 94vw;
+    }
+    .swiper-item-title-title{
+        font-size: 1.6em;
+    }
 }
 
